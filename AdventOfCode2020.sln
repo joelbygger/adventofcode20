@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day1", "src\Day1\Day1.csproj", "{C0CF3ACB-DD3F-411E-A3BE-A4D398A44702}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day1", "src\Day1\Day1.csproj", "{C0CF3ACB-DD3F-411E-A3BE-A4D398A44702}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day1.Tests", "src\Day1.Tests\Day1.Tests.csproj", "{F08B0621-B3BB-4BF9-AA1E-6DC085036C7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day1.Tests", "src\Day1.Tests\Day1.Tests.csproj", "{F08B0621-B3BB-4BF9-AA1E-6DC085036C7D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8D502299-F516-4C54-BCA6-7C843D0D7D09}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
