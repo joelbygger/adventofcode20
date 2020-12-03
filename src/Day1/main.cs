@@ -17,13 +17,22 @@ namespace Day1
             }
 
             // Do the magic.
-            using var sr = new System.IO.StreamReader(args[0]);
-            int? sum = ExpenseReport.ExpenseReport.multiplyValsWithSum2020(sr);
+            using var sr1 = new System.IO.StreamReader(args[0]);
+            int? sum = ExpenseReport.ExpenseReport.multiplyValsWithSum2020(sr1, 2);
             if (sum != null) {
-                Console.WriteLine("Mupltiplied: " + sum);
+                Console.WriteLine("Task1: Mupltiplied: " + sum);
             }
             else {
-                Console.WriteLine("No valid vals found.");
+                Console.WriteLine("Task1: No valid vals found.");
+            }
+
+            using var sr2 = new System.IO.StreamReader(args[0]);
+            sum = ExpenseReport.ExpenseReport.multiplyValsWithSum2020(sr2, 3);
+            if (sum != null) {
+                Console.WriteLine("Task2: Mupltiplied: " + sum);
+            }
+            else {
+                Console.WriteLine("Task2: No valid vals found.");
             }
         }
     }
