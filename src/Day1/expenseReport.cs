@@ -4,26 +4,26 @@ using System.Linq;
 
 namespace ExpenseReport
 {
-    public static class ExpenseReport
+    public class ExpenseReport
     {
-        static public int? multiplyValsWithSum2020(System.IO.StreamReader sr, int noVals)
+        public ExpenseReport(System.IO.StreamReader sr)
         {
+            _expenses = new List<int>();
+            
+            while (!sr.EndOfStream) {
+                _expenses.Add(Convert.ToInt32(sr.ReadLine()));
+            }
+        }
 
-            var found = findValsWithSum2020(readFile(sr), noVals);
+        public int? multiplyValsWithSum2020(int noVals)
+        {
+            var found = findValsWithSum2020(_expenses, noVals);
             if (found.sumFound) {
                 return found.vals.Aggregate((a, b) => a * b);
             }
             return null;
         }
 
-        static private List<int> readFile(System.IO.StreamReader sr)
-        {
-            List<int> expenses = new List<int>();
-            while (!sr.EndOfStream) {
-                expenses.Add(Convert.ToInt32(sr.ReadLine()));
-            }
-            return expenses;
-        }
 
         /**
          * Compare all elements to each other until enough (input param) are found.
@@ -31,7 +31,7 @@ namespace ExpenseReport
          *   for(i;i<len;i++) { for(j=i+1;j<len;j++) {list[i] + list[j] }}
          * but me pretending I know CS.
          */
-        static private (bool sumFound, List<int> vals) findValsWithSum2020(List<int> expenses, int noVals, List<int>? vals = null)
+        private (bool sumFound, List<int> vals) findValsWithSum2020(List<int> expenses, int noVals, List<int>? vals = null)
         {
             bool found = false;
 
@@ -55,5 +55,8 @@ namespace ExpenseReport
 
             return (found, vals);
         }
+
+
+        private List<int> _expenses;
     }
 }
