@@ -9,7 +9,7 @@ namespace ExpenseReport
         public ExpenseReport(System.IO.StreamReader sr)
         {
             _expenses = new List<int>();
-            
+
             while (!sr.EndOfStream) {
                 _expenses.Add(Convert.ToInt32(sr.ReadLine()));
             }
@@ -57,6 +57,6 @@ namespace ExpenseReport
         }
 
 
-        private List<int> _expenses;
+        private readonly List<int> _expenses;
     }
 }
