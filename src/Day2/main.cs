@@ -19,13 +19,12 @@ namespace Day2
             // Do the magic.
             using var sr = new System.IO.StreamReader(args[0]);
             var pass = new Passwords(sr);
-            int? sum = pass.countValid();
-            if (sum != null) {
-                Console.WriteLine("Task1: valid passowords: " + sum);
-            }
-            else {
-                Console.WriteLine("Task1: No valid vals found.");
-            }
+
+            int sum = pass.countValidTask1();
+            Console.WriteLine("Task1: valid passowords: " + sum);
+
+            sum = pass.countValidTask2();
+            Console.WriteLine("Task2: valid passowords: " + sum);
         }
     }
 }

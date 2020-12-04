@@ -9,7 +9,7 @@ namespace Day2.Test
         {
             using var sr = new System.IO.StreamReader("day2_example.txt");
             var pass = new Passwords(sr);
-            Assert.Equal(2, pass.countValid());
+            Assert.Equal(2, pass.countValidTask1());
         }
 
         [Fact]
@@ -17,7 +17,23 @@ namespace Day2.Test
         {
             using var sr = new System.IO.StreamReader("day2.txt");
             var pass = new Passwords(sr);
-            Assert.Equal(483, pass.countValid());
+            Assert.Equal(483, pass.countValidTask1());
+        }
+
+        [Fact]
+        public void task2ExampleInput()
+        {
+            using var sr = new System.IO.StreamReader("day2_example.txt");
+            var pass = new Passwords(sr);
+            Assert.Equal(1, pass.countValidTask2());
+        }
+
+        [Fact]
+        public void task2RealInput()
+        {
+            using var sr = new System.IO.StreamReader("day2.txt");
+            var pass = new Passwords(sr);
+            Assert.Equal(482, pass.countValidTask2());
         }
     }
 }
