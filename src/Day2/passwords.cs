@@ -43,13 +43,13 @@ namespace Day2
         public int countValidTask2()
         {
             int sum = 0;
-            foreach(var pass in _passwords) {
+            foreach (var pass in _passwords) {
                 if (pass.pass.Substring(pass.min - 1, 1).Equals(pass.chr) ^
                     (pass.pass.Length >= pass.max &&
                     pass.pass.Substring(pass.max - 1, 1).Equals(pass.chr))) {
-                        sum++;
-                    }
+                    sum++;
                 }
+            }
             return sum;
         }
 
