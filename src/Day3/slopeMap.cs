@@ -16,14 +16,14 @@ namespace Day3
             }
         }
 
-        public int collisionsOnTravel()
+        public int collisionsOnTravel(int xStep, int yStep)
         {
             int collisions = 0;
             (int xPos, int yPos) = (xPos = 0, yPos = 0);
 
-            while (yPos < _map.Count - 1) { // -1 since we always increment before check.
-                xPos = _map[yPos].PlaceIndexInBounds(xPos + 3);
-                yPos++;
+            while (yPos < _map.Count - yStep) {
+                xPos = _map[yPos].PlaceIndexInBounds(xPos + xStep);
+                yPos += yStep;
                 if (_map[yPos][xPos] == '#') {
                     collisions++;
                 }

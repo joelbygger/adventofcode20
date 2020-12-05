@@ -20,7 +20,7 @@ namespace Day3
             using var sr = new System.IO.StreamReader(args[0]);
             var map = new SlopeMap(sr);
 
-            int sum = map.collisionsOnTravel();
+            int sum = map.collisionsOnTravel(xStep: 3, yStep: 1);
             Console.WriteLine("Task1: collisions: " + sum);
         }
     }
