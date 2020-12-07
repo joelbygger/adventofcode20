@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Day2
@@ -28,8 +29,7 @@ namespace Day2
 
         public int countValidTask1()
         {
-            int sum = 0;
-
+            /*int sum 0;
             foreach (var pass in _passwords) {
                 Regex rgx = new Regex(pass.chr);
                 var cnt = rgx.Matches(pass.pass).Count;
@@ -37,7 +37,12 @@ namespace Day2
                     sum++;
                 }
             }
-            return sum;
+            return sum;*/
+            var valids = from pass in _passwords
+                         where pass.pass.Count(c => c == pass.chr[0]) <= pass.max
+                         where pass.pass.Count(c => c == pass.chr[0]) >= pass.min
+                         select pass;
+            return valids.Count();
         }
 
         public int countValidTask2()
