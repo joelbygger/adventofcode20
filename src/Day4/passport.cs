@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -36,25 +37,14 @@ namespace Day4
 
         public int countValid(bool useStrictRules)
         {
-            int sum = 0;
-            (string rules, int count) rules;
+            (Regex regex, int cnt) rules = useStrictRules ? strictRules() : simpleRules();
 
-            if (useStrictRules) {
-                rules = createStrictRules();
-            }
-            else {
-                rules = createSimpleRules();
-            }
-            Regex mainRegex = new Regex(rules.rules);
-
-            foreach (var passport in _passports) {
-                sum += mainRegex.Matches(passport).Count == rules.count ? 1 : 0;
-            }
-
-            return sum;
+            return _passports
+                .Where(p => rules.regex.Matches(p).Count() == rules.cnt)
+                .Count();
         }
 
-        private (string, int) createStrictRules()
+        private (Regex, int) strictRules()
         {
             // Possible /s* should be removed
             // I guess this pattern / method allows same tab to appear several times, might not be ok?
@@ -79,7 +69,7 @@ namespace Day4
             return (joinRuleGroups(rules), rules.Length);
         }
 
-        private (string, int) createSimpleRules()
+        private (Regex, int) simpleRules()
         {
             string[] rules = {
             @"(byr:)",
@@ -93,7 +83,7 @@ namespace Day4
             return (joinRuleGroups(rules), rules.Length);
         }
 
-        private string joinRuleGroups(string[] rules)
+        private Regex joinRuleGroups(string[] rules)
         {
             StringBuilder sb = new StringBuilder();
             const char eitherOr = '|';
@@ -103,7 +93,7 @@ namespace Day4
             }
 
             // The last alternator added in loop must be removed.
-            return sb.ToString().TrimEnd(eitherOr);
+            return new Regex(sb.ToString().TrimEnd(eitherOr));
         }
     }
 }
