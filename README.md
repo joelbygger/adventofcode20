@@ -2,7 +2,9 @@
 
 Learning C# while solving AoC 2020.
 
-This means I am also figuring out how VS behaves in relation to folder structure on disk and that my solutions might be bloated as I want to explore the languge features (i.e. I won't win from speedy implementation).
+This means my solution might not be most pretty, but use some feature I find interestin.
+
+Also means I'm figuring out how VS behaves with folder structure.
 
 To run tests, go to code filder and execute `dotnet test`.
 

@@ -19,7 +19,8 @@ namespace Day4
             // Do the magic.
             using var sr = new System.IO.StreamReader(args[0]);
             var passports = new Passport(sr);
-            Console.WriteLine("Task 1: valid passports: " + passports.countValid());
+            Console.WriteLine("Task 1: valid passports: " + passports.countValid(false));
+            Console.WriteLine("Task 2: valid passports: " + passports.countValid(true));
         }
     }
 }
