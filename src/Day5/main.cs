@@ -13,7 +13,8 @@ namespace Day5
                 Console.WriteLine("Invlid filename.");
             }
             else {
-                Console.WriteLine("Task 1: Max seat ID: " + PlaneSeats.calcMaxId(args[0]));
+                Console.WriteLine("Task 1: Max seat ID: " + new PlaneSeats(args[0]).calcMaxId());
+                Console.WriteLine("Task 2: med: " + new PlaneSeats(args[0]).findEmptySeat());
             }
             return;
         }
