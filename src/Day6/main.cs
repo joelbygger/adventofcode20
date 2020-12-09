@@ -14,8 +14,11 @@ namespace Day6
                 Console.WriteLine("Invalid filename");
             }
             else {
-                Console.WriteLine("Task 1: sum of all yes: " +
-                    new Questionnaire(args[0]).yesCnt());
+                var seats = new Questionnaire(args[0]);
+                Console.WriteLine("Task 1: sum of all unique yes: " +
+                    seats.sumAllUniqueYesPerGroup());
+                Console.WriteLine("Task 2: sum of all common yes: " +
+                    seats.sumCommonYesPerGroup());
             }
         }
     }
