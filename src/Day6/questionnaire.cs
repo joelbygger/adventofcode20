@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -23,56 +22,31 @@ namespace Day6
             return _answers
                 .Split("\r\n\r\n", StringSplitOptions.RemoveEmptyEntries)
                 .Select(l => l.Replace("\r\n", ""))
-                .Select(l => l.Distinct())
-                .Select(l => l.ToList().Count)
+                .Select(l => l.Distinct().ToList().Count)
                 .Sum();
         }
 
         public int sumCommonYesPerGroup()
         {
-            List<List<string>> groups = answersByGroup();
-
-            int sum = 0;
-            foreach (var group in groups) {
-                var cmnYes = new Dictionary<char, int>();
-                foreach (var individ in group) {
-                    foreach (var q in individ) {
-                        if (cmnYes.ContainsKey(q)) {
-                            cmnYes[q] = cmnYes[q] + 1;
-                        }
-                        else {
-                            cmnYes.Add(q, 1);
-                        }
-                    }
-                }
-
-                sum += cmnYes.AsEnumerable()
-                    .Where(q => q.Value >= group.Count())
-                    .Select(q => 1)
-                    .Sum();
-            }
+            /* 1. An array split into groups.
+             * 2. Each group split into individuals.
+             * 3.In each group, find common answers
+             *  a. Aggregate is like ForAll, but starts w. 2 values from input, then takes
+             *     one from input and the other from return from called function.
+             *  b. Intersect returns array with common things, which we propagetes to next comparison.
+             *  c. Save length of array (?) of common answers
+             * 4. Execute the linq with Sum, sum it all up. */
+            var sum = _answers
+                .Split("\r\n\r\n", StringSplitOptions.RemoveEmptyEntries)
+                .Select(rawGroup => rawGroup.Split("\r\n", StringSplitOptions.RemoveEmptyEntries))
+                .Select(group => group.Aggregate((curr, next) => {
+                    var hej = curr.Intersect(next);
+                    return new String(hej.ToArray());
+                })
+                    .Count())
+                .Sum();
 
             return sum;
-        }
-
-        private List<List<string>> answersByGroup()
-        {
-            var groups = new List<List<string>>();
-            var strReader = new StringReader(_answers);
-            string line;
-
-            groups.Add(new List<string>());
-
-            while ((line = strReader.ReadLine()) != null) {
-                if (line != "") {
-                    groups.Last().Add(line);
-                }
-                else {
-                    groups.Add(new List<string>());
-                }
-            }
-
-            return groups;
         }
     }
 }
