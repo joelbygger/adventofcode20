@@ -16,7 +16,7 @@ namespace Day7
             else {
                 var bags = new BagSorting(args[0]);
                 Console.WriteLine("Task 1: sum: " +
-                    bags.outerColorsThatCanContainGolden());
+                    bags.bagColorsThatCanContainGolden());
             }
         }
 
