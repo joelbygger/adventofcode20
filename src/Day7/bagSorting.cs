@@ -45,25 +45,33 @@ namespace Day7
             }
         }
 
-        public int bagColorsThatCanContainGolden()
+        public int bagsThatCanContain(string goal)
         {
-            const string goal = "shiny gold";
-            var bags = bagsContainingColor(goal).Distinct().ToList();
+            var bags = bagsContainingBag(goal).Distinct().ToList();
             bags.Remove(goal);
             return bags.Count();
         }
 
-        private List<string> bagsContainingColor(string color)
+        private List<string> bagsContainingBag(string bagColor)
         {
             var res = new List<string>();
-            res.Add(color);
+            res.Add(bagColor);
 
             foreach (var bag in _bagRules) {
                 foreach (var content in bag.Value) {
-                    if (content.Key == color) {
-                        res.AddRange(bagsContainingColor(bag.Key));
+                    if (content.Key == bagColor) {
+                        res.AddRange(bagsContainingBag(bag.Key));
                     }
                 }
+            }
+            return res;
+        }
+
+        public int bagsInBag(string bagColor)
+        {
+            int res = 0;
+            foreach (var bag in _bagRules[bagColor]) {
+                res += bag.Value + bag.Value * bagsInBag(bag.Key);
             }
             return res;
         }

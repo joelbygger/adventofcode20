@@ -13,6 +13,9 @@
     <Content Include="..\Day7\input_example.txt" Link="input_example.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\Day7\input_example2.txt" Link="input_example2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

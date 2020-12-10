@@ -15,8 +15,10 @@ namespace Day7
             }
             else {
                 var bags = new BagSorting(args[0]);
-                Console.WriteLine("Task 1: sum: " +
-                    bags.bagColorsThatCanContainGolden());
+                Console.WriteLine("Task 1: sum of bags that can contain color: " +
+                    bags.bagsThatCanContain("shiny gold"));
+                Console.WriteLine("Task 2: sum of bags inside bag with color: " +
+                    bags.bagsInBag("shiny gold"));
             }
         }
 
