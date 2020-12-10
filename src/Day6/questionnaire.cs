@@ -40,8 +40,8 @@ namespace Day6
                 .Split("\r\n\r\n", StringSplitOptions.RemoveEmptyEntries)
                 .Select(rawGroup => rawGroup.Split("\r\n", StringSplitOptions.RemoveEmptyEntries))
                 .Select(group => group.Aggregate((curr, next) => {
-                    var hej = curr.Intersect(next);
-                    return new String(hej.ToArray());
+                    var cmn = curr.Intersect(next);
+                    return new String(cmn.ToArray());
                 })
                     .Count())
                 .Sum();
