@@ -36,7 +36,6 @@ namespace Day8
                         break;
                     default:
                         throw new ArgumentOutOfRangeException("Shouldn't be here, should we?");
-                        break;
                 }
 
                 if(nxtIndex > _prgm.Count) {
