@@ -15,11 +15,16 @@ namespace Day8
             }
             else {
                 var prgm = new Program(args[0]);
-                var exec = new Executor(prgm.get);
                 Console.WriteLine("Task 1: last acc val: " +
-                    exec.run());/*
-                Console.WriteLine("Task 2: sum of all common yes: " +
-                    seats.sumCommonYesPerGroup());*/
+                    new Executor(prgm.get).run().accumulator);
+
+                foreach (var prgmVer in prgm.getModified(Program.OpCodes.jmp, Program.OpCodes.nop)) {
+                    var res = new Executor(prgmVer).run();
+                    if (!res.infiniteLoop) {
+                        Console.WriteLine("Task 2: las acc val: " + res);
+                        break;
+                    }
+                }
             }
         }
     }

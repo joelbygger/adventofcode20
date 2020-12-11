@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Day8
 {
-    using PrgmList = List<Program.Command>;
+    using PrgmList = List<Program.Instruction>;
     public class Executor
     {
         private readonly PrgmList _prgm;
@@ -15,9 +15,10 @@ namespace Day8
             _accum = 0;
         }
 
-        public int run()
+        public (int accumulator, bool infiniteLoop) run()
         {
             int index = 0;
+            bool endOnInfiniteLoop = false;
             var visited = new HashSet<int>();
 
             while (true) {
@@ -38,25 +39,27 @@ namespace Day8
                         throw new ArgumentOutOfRangeException("Shouldn't be here, should we?");
                 }
 
-                if(nxtIndex > _prgm.Count) {
-                    throw new IndexOutOfRangeException("Well this is weird.");
+                if (nxtIndex > _prgm.Count - 1 || nxtIndex < 0) {
+                    endOnInfiniteLoop = false;
+                    break;
                 }
 
-                if(visited.Contains(nxtIndex)) {
+                if (visited.Contains(nxtIndex)) {
+                    endOnInfiniteLoop = true;
                     break;
                 }
                 index = nxtIndex;
             }
 
-            return _accum;
+            return (accumulator: _accum, infiniteLoop: endOnInfiniteLoop);
         }
 
-        private static (int, int) acc(int i, Program.Command cmd, int accumulator)
+        private static (int, int) acc(int i, Program.Instruction cmd, int accumulator)
         {
             return (++i, accumulator += cmd.arg);
         }
 
-        private static int jmp(int i, Program.Command cmd)
+        private static int jmp(int i, Program.Instruction cmd)
         {
             return i + cmd.arg;
         }
