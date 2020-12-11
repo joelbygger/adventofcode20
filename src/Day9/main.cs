@@ -16,11 +16,14 @@ namespace Day9
             else {
                 Console.WriteLine("NOTE preamble different (hardcoded) fir example and real code!\n");
 
+                var xmas = new XMASencryption(args[0]);
                 bool foundInvalid = false;
-                long val = 0; 
-                (foundInvalid, val) = new XMASencryption(args[0]).findInvalidVal(25);
+                long val = 0;
+                (foundInvalid, val) = xmas.invalidVal(25);
                 Console.WriteLine("Task 1: found invalid: {0} and was val: {1}.",
                     foundInvalid, val);
+
+                Console.WriteLine("Task 2: " + xmas.extremesInWindowSum(val));
             }
         }
     }
