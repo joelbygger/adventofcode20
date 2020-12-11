@@ -14,7 +14,8 @@ namespace Day8
                 Console.WriteLine("Invalid filename");
             }
             else {
-                var exec = new Executor(ParseProgram.readFile(args[0]));
+                var prgm = new Program(args[0]);
+                var exec = new Executor(prgm.get);
                 Console.WriteLine("Task 1: last acc val: " +
                     exec.run());/*
                 Console.WriteLine("Task 2: sum of all common yes: " +

@@ -8,14 +8,14 @@ namespace Day8.Tests
         [Fact]
         public void Task1ExampleInput()
         {
-            var exec = new Executor(ParseProgram.readFile("input_example.txt"));
+            var exec = new Executor(new Program("input_example.txt").get);
             Assert.Equal(5, exec.run()); ;
         }
 
         [Fact]
         public void Task1RealInput()
         {
-            var exec = new Executor(ParseProgram.readFile("input.txt"));
+            var exec = new Executor(new Program("input.txt").get);
             Assert.Equal(1810, exec.run()); ;
         }
     }

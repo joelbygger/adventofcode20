@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Day8
 {
-    using PrgmList = List<ParseProgram.Command>;
+    using PrgmList = List<Program.Command>;
     public class Executor
     {
         private readonly PrgmList _prgm;
@@ -25,13 +25,13 @@ namespace Day8
                 visited.Add(index);
 
                 switch (_prgm[index].op) {
-                    case ParseProgram.OpCodes.acc:
+                    case Program.OpCodes.acc:
                         (nxtIndex, _accum) = acc(index, _prgm[index], _accum);
                         break;
-                    case ParseProgram.OpCodes.jmp:
+                    case Program.OpCodes.jmp:
                         nxtIndex = jmp(index, _prgm[index]);
                         break;
-                    case ParseProgram.OpCodes.nop:
+                    case Program.OpCodes.nop:
                         nxtIndex = nop(index);
                         break;
                     default:
@@ -51,12 +51,12 @@ namespace Day8
             return _accum;
         }
 
-        private static (int, int) acc(int i, ParseProgram.Command cmd, int accumulator)
+        private static (int, int) acc(int i, Program.Command cmd, int accumulator)
         {
             return (++i, accumulator += cmd.arg);
         }
 
-        private static int jmp(int i, ParseProgram.Command cmd)
+        private static int jmp(int i, Program.Command cmd)
         {
             return i + cmd.arg;
         }
