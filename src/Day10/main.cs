@@ -16,6 +16,9 @@ namespace Day10
             else {
                 var adapter = new AdapterSorting(args[0]);
                 Console.WriteLine("Task 1: sum: " + adapter.getSum1and3StepInChain());
+
+                adapter = new AdapterSorting(args[0]); // Task1 is destructive.
+                Console.WriteLine("Task 2: sum: " + adapter.findAdapterCombinations(adapter.getMaxAdapterJolt()));
             }
         }
     }
