@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "AdventOfCode2020": {
-      "commandName": "Project",
-      "commandLineArgs": "C:\\Users\\JoelSäll\\source\\repos\\AdventOfCode2020\\day1\\input_example.txt"
-    }
-  }
-}
